@@ -1,0 +1,28 @@
+<section *ngIf="authService.loggedIn">
+  <div class="panel">
+    <p class="panel-heading">
+      Accounts
+    </p>
+    <div class="panel-block">
+      <input class="input" type="text" placeholder="Search" (keyup)="filterAccountsByPattern(pattern.value)" #pattern />
+    </div>
+    <p class="panel-tabs">
+      <a id="all" (click)="filterAccountsByType(all.id)" #all>All</a>
+      <a id="savings" (click)="filterAccountsByType(savings.id)" #savings>Savings</a>
+      <a id="current" (click)="filterAccountsByType(current.id)" #current>Current</a>
+    </p>
+    <div *ngFor="let account of filteredAccounts">
+      <a (click)="router.navigateByUrl('/transactions/' + account.accountNumber)">
+        <div class="panel-block repel">
+          <div>{{ account.accountNumber }}</div>
+          <div>${{ account.balance }}</div>
+        </div>
+      </a>
+    </div>
+    <div class="panel-block">
+      <button class="button is-link is-outlined is-fullwidth">
+        Manage
+      </button>
+    </div>
+  </div>
+</section>

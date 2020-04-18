@@ -1,0 +1,34 @@
+.transaction__header {
+  font-weight: bold;
+  padding: 0.5em 0;
+}
+
+input[type='checkbox'] {
+  display: none;
+}
+
+.transaction-history__details--collapsible {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  column-gap: 1em;
+}
+
+.grid__cell--2-cols {
+  grid-row: span 1;
+  grid-column: span 2;
+}
+
+.transaction-history__toggle:checked
+  + .transaction-history__details--collapsible {
+  max-height: 100vh;
+}
+
+.transaction-history__header--collapsible {
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  column-gap: 1em;
+}

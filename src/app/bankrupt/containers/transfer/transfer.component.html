@@ -1,0 +1,46 @@
+<div class="container">
+  <form [formGroup]="transferForm">
+    <div class="field">
+      <label for="source" class="label">Source Account</label>
+      <div class="control select is-fullwidth">
+        <select id="source" type="select" formControlName="source">
+          <option
+            [value]="account.accountNumber"
+            [selected]="account.preferred"
+            *ngFor="let account of accounts"
+            >{{ account.accountType }} - {{ account.accountNumber }}
+            {{ account.balance }}</option
+          >
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label for="target" class="label">Target Account</label>
+      <div class="control">
+        <input id="target" class="input" type="text" formControlName="target" />
+      </div>
+    </div>
+    <div class="field">
+      <label for="amount" class="label">Amount</label>
+      <div class="control">
+        <input class="input" type="text" formControlName="amount" />
+      </div>
+    </div>
+    <div class="field">
+      <label for="description" class="label">Description</label>
+      <div class="control">
+        <input
+          id="description"
+          class="input"
+          type="text"
+          formControlName="description"
+        />
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <button class="button is-link" (click)="transfer()">Transfer</button>
+      </div>
+    </div>
+  </form>
+</div>

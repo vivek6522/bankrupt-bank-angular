@@ -1,0 +1,63 @@
+<header class="header">
+  <nav
+    class="navbar is-dark is-spaced"
+    role="navigation"
+    aria-label="main navigation"
+  >
+    <div class="navbar-brand">
+      <a class="navbar-item">
+        <img src="/assets/images/baseline_account_balance_white_18dp.png" />
+      </a>
+      <a
+        role="button"
+        class="navbar-burger burger"
+        [class.is-active]="isBurgerActive"
+        (click)="toggleBurgerActive()"
+        aria-label="menu"
+        aria-expanded="false"
+        data-target="bankruptNavbar"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div id="bankruptNavbar" class="navbar-menu" [class.is-active]="isBurgerActive">
+      <div class="navbar-start">
+        <a [routerLink]="'home'" routerLinkActive="active" class="navbar-item">
+          Home
+        </a>
+        <a [routerLink]="'customers'" routerLinkActive="active" class="navbar-item">
+          Customer
+        </a>
+        <a
+          [routerLink]="'transactions'"
+          routerLinkActive="active"
+          class="navbar-item"
+        >
+          Transactions
+        </a>
+        <a [routerLink]="'transfer'" routerLinkActive="active" class="navbar-item">
+          Transfer
+        </a>
+      </div>
+      <div class="navbar-end">
+        <a class="navbar-item" (click)="authService.logout()" *ngIf="authService.loggedIn">Logout</a>
+        <a class="navbar-item" (click)="authService.login()" *ngIf="!authService.loggedIn">Login</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<main class="section">
+  <router-outlet></router-outlet>
+</main>
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Bankrupt Bank</strong> by Vivek Prajapati. The source code is
+      licensed under <a href="http://unlicense.org/">The Unlicense</a>. The
+      website content is licensed under
+      <a href="http://unlicense.org/">The Unlicense</a>.
+    </p>
+  </div>
+</footer>
