@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
 import { BankruptComponent } from './bankrupt.component';
+import { AuthService } from './services/auth.service';
 
 describe('BankruptComponent', () => {
   let component: BankruptComponent;
@@ -8,7 +9,14 @@ describe('BankruptComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [BankruptComponent]
+      declarations: [BankruptComponent],
+      imports: [RouterTestingModule.withRoutes([])],
+      providers: [
+        {
+          provide: AuthService,
+          useValue: {},
+        },
+      ],
     }).compileComponents();
   }));
 

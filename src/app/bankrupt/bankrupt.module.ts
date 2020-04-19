@@ -2,16 +2,15 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { AuthService } from './auth.service';
-import { BankruptAuthGuard } from './bankrupt.authguard';
+import { AuthService } from './services/auth.service';
+import { BankruptAuthGuard } from './services/bankrupt.authguard';
 import { BankruptComponent } from './bankrupt.component';
 import { BankruptHomeComponent } from './containers/bankrupt-home/bankrupt-home.component';
 import { CustomerComponent } from './containers/customer/customer.component';
 import { TransactionsComponent } from './containers/transactions/transactions.component';
 import { TransferComponent } from './containers/transfer/transfer.component';
-import { CustomerService } from './customer.service';
-import { AbsPipe } from './pipes/abs.pipe';
-import { TransferService } from './transfer.service';
+import { CustomerService } from './services/customer.service';
+import { TransferService } from './services/transfer.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BankruptInterceptor } from './interceptors/bankrupt.interceptor';
 
@@ -42,7 +41,6 @@ export const ROUTES = [
     CustomerComponent,
     TransferComponent,
     TransactionsComponent,
-    AbsPipe,
     BankruptHomeComponent,
     BankruptComponent
   ],

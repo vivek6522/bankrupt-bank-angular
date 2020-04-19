@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { CustomerService } from '../../customer.service';
+import { CustomerService } from '../../services/customer.service';
 import { Account } from '../../models/account.model';
-import { TransferService } from '../../transfer.service';
+import { TransferService } from '../../services/transfer.service';
 
 @Component({
   selector: 'app-transfer',

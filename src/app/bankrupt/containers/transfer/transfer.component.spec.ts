@@ -1,6 +1,9 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
 import { TransferComponent } from './transfer.component';
+import { BrowserTestingModule } from '@angular/platform-browser/testing';
 
 describe('TransferComponent', () => {
   let component: TransferComponent;
@@ -8,9 +11,13 @@ describe('TransferComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TransferComponent ]
-    })
-    .compileComponents();
+      declarations: [TransferComponent],
+      imports: [
+        ReactiveFormsModule,
+        HttpClientTestingModule,
+        RouterTestingModule.withRoutes([]),
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

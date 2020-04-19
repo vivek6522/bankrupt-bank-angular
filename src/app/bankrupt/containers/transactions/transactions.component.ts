@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Account } from '../../models/account.model';
 import { TransferReceipt } from '../../models/transfer.model';
-import { TransferService } from '../../transfer.service';
+import { TransferService } from '../../services/transfer.service';
 
 @Component({
   selector: 'app-transactions',
@@ -14,16 +13,13 @@ import { TransferService } from '../../transfer.service';
 export class TransactionsComponent implements OnInit {
   transactionHistory: TransferReceipt[];
   accounts: Account[];
-  form: FormGroup;
 
   constructor(
     private readonly transferService: TransferService,
-    private readonly activatedRoute: ActivatedRoute,
-    private readonly fb: FormBuilder
+    private readonly activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.form = this.fb.group({});
     this.activatedRoute.paramMap
       .pipe(
         switchMap((params: ParamMap) => {

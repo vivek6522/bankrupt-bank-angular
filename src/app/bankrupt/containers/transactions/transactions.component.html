@@ -1,46 +1,44 @@
-<form [formGroup]="form">
-  <div class="container">
-    <div *ngFor="let entry of transactionHistory">
-      <div class="content">
-        <label
-          class="transaction-history__header--collapsible"
-          [for]="entry.paymentReference"
-        >
-          <div class="transaction__header">
-            {{ entry.source }}
-          </div>
-          <div class="transaction__header">
-            {{ entry.amount }}
-          </div>
-        </label>
-        <input
-          class="transaction-history__toggle"
-          [id]="entry.paymentReference"
-          type="checkbox"
-        />
-        <div class="transaction-history__details--collapsible">
-          <div>Target account</div>
-          <div>{{ entry.target }}</div>
-          <div>Description</div>
-          <div>{{ entry.description }}</div>
-          <div class="grid__cell--2-cols">
-            <a
-              *ngIf="isDebit(entry.amount)"
-              [href]="constructTransferLink(entry)"
-              title="Initiate new transfer to this account"
-              target="_blank"
-              >Repeat transfer</a
-            >
-            <a
-              *ngIf="!isDebit(entry.amount)"
-              [href]="constructTransferLink(entry)"
-              title="Initiate new transfer to this account"
-              target="_blank"
-              >Initiate transfer</a
-            >
-          </div>
+<div class="container">
+  <div *ngFor="let entry of transactionHistory">
+    <div class="content">
+      <label
+        class="transaction-history__header--collapsible"
+        [for]="entry.paymentReference"
+      >
+        <div class="transaction__header">
+          {{ entry.source }}
+        </div>
+        <div class="transaction__header">
+          {{ entry.amount }}
+        </div>
+      </label>
+      <input
+        class="transaction-history__toggle"
+        [id]="entry.paymentReference"
+        type="checkbox"
+      />
+      <div class="transaction-history__details--collapsible">
+        <div>Target account</div>
+        <div>{{ entry.target }}</div>
+        <div>Description</div>
+        <div>{{ entry.description }}</div>
+        <div class="grid__cell--2-cols">
+          <a
+            *ngIf="isDebit(entry.amount)"
+            [href]="constructTransferLink(entry)"
+            title="Initiate new transfer to this account"
+            target="_blank"
+            >Repeat transfer</a
+          >
+          <a
+            *ngIf="!isDebit(entry.amount)"
+            [href]="constructTransferLink(entry)"
+            title="Initiate new transfer to this account"
+            target="_blank"
+            >Initiate transfer</a
+          >
         </div>
       </div>
     </div>
   </div>
-</form>
+</div>

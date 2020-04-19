@@ -2,8 +2,8 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { concatMap } from 'rxjs/operators';
-import { AuthService } from '../../auth.service';
-import { CustomerService } from '../../customer.service';
+import { AuthService } from '../../services/auth.service';
+import { CustomerService } from '../../services/customer.service';
 import { Account } from './../../models/account.model';
 
 const ALL_ACCOUNTS_TAB_ID = 'all';
