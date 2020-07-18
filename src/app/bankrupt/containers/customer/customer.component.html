@@ -1,4 +1,30 @@
-<div>
-  <pre>{{ customer | json }}</pre>
-  <pre>{{ customerAccounts | json }}</pre>
-</div>
+<section id="customer" class="container">
+  <h4>Profile Information</h4>
+  <div class="customer__details">
+
+    <span class="label">ID</span>
+    <span>{{ customer?.sub }}</span>
+
+    <span class="label">Name</span>
+    <span>{{ customer?.name }}</span>
+
+    <span class="label">Picture</span>
+    <span><img [src]="customer?.picture" alt="Profile picture"/></span>
+
+  </div>
+</section>
+
+<section id="accountCreation" class="container mt-4">
+  <h4>Create a new account</h4>
+  <form [formGroup]="newAccountForm">
+    <div class="input-group">
+      <select class="form-control" formControlName="accountType" aria-label="Select new account type">
+        <option *ngFor="let account of ACCOUNT_TYPES" [value]="account">{{ account }}</option>
+      </select>
+      <div class="input-group-append">
+        <button class="btn btn-primary" (click)="createAccount()">Confirm</button>
+      </div>
+    </div>
+  </form>
+  <p class="text-success" *ngIf="newAccount">Account {{ newAccount }} created.</p>
+</section>

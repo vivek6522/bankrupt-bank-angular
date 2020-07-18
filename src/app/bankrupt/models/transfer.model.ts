@@ -1,6 +1,6 @@
 import { Timestamp } from './timestamp.model';
 
-export class TransferReceipt {
+export interface TransferReceipt {
   paymentReference: string;
   source: string;
   amount: number;

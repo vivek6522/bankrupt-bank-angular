@@ -16,7 +16,8 @@ const ALL_ACCOUNTS_TAB_ID = 'all';
 export class BankruptHomeComponent implements OnInit {
   accounts: Account[];
   filteredAccounts: Account[];
-  lastActiveTabId = ALL_ACCOUNTS_TAB_ID;
+  typeFilterToUse: string;
+  searchPatternToUse: string;
 
   constructor(
     readonly router: Router,
@@ -36,44 +37,49 @@ export class BankruptHomeComponent implements OnInit {
         })
       )
       .subscribe((filterType) => {
-        this.filterAccountsByType(filterType);
+        this.filterAccounts(filterType, '');
       });
   }
 
-  filterAccountsByType(type: string) {
-    type = !type ? ALL_ACCOUNTS_TAB_ID : type;
+  filterAccounts(selectedType: string, searchPattern: string) {
+    this.filteredAccounts = this.filterAccountsByType(selectedType);
 
-    switch (type) {
-      case ALL_ACCOUNTS_TAB_ID:
-        this.filteredAccounts = this.accounts;
-        break;
-      default:
-        this.filteredAccounts = new Array();
-        this.accounts.forEach((element) => {
-          if (element.accountType === type.toUpperCase()) {
-            this.filteredAccounts.push(element);
-          }
-        });
-        break;
-    }
-
-    document.getElementById(this.lastActiveTabId).className = '';
-    document.getElementById(type).className = 'is-active';
-    this.lastActiveTabId = type;
+    this.filteredAccounts = this.filterAccountsByPattern(searchPattern);
 
     const navigationExtras: NavigationExtras =
-      type === ALL_ACCOUNTS_TAB_ID ? undefined : { fragment: type };
+      this.typeFilterToUse === ALL_ACCOUNTS_TAB_ID
+        ? undefined
+        : { fragment: this.typeFilterToUse };
     this.location.replaceState(
       this.router.createUrlTree(['/home'], navigationExtras).toString()
     );
   }
 
-  filterAccountsByPattern(pattern: string) {
-    this.filteredAccounts = new Array();
-    this.accounts.forEach((element) => {
-      if (element.accountNumber.match(new RegExp(pattern))) {
-        this.filteredAccounts.push(element);
+  private filterAccountsByType(selectedType: string) {
+    if (!selectedType) {
+      // Invoked by search box.
+      if (!this.typeFilterToUse) {
+        // First search.
+        this.typeFilterToUse = ALL_ACCOUNTS_TAB_ID;
       }
-    });
+    } else {
+      // Invoked by filter boxes.
+      this.typeFilterToUse = selectedType;
+    }
+
+    if (this.typeFilterToUse === ALL_ACCOUNTS_TAB_ID) {
+      return this.accounts;
+    }
+    return this.accounts.filter(
+      (account) => account.accountType === this.typeFilterToUse.toUpperCase()
+    );
+  }
+
+  private filterAccountsByPattern(searchPattern: string) {
+    this.searchPatternToUse =
+      searchPattern !== '!' ? searchPattern : this.searchPatternToUse;
+    return this.filteredAccounts.filter((account) =>
+      account.accountNumber.match(new RegExp(this.searchPatternToUse, 'i'))
+    );
   }
 }

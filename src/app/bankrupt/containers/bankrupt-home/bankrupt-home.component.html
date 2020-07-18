@@ -1,28 +1,29 @@
-<section *ngIf="authService.loggedIn">
-  <div class="panel">
-    <p class="panel-heading">
-      Accounts
-    </p>
-    <div class="panel-block">
-      <input class="input" type="text" placeholder="Search" (keyup)="filterAccountsByPattern(pattern.value)" #pattern />
+<section id="home" *ngIf="authService.loggedIn" class="container">
+  <h1>Accounts</h1>
+  <div class="mt-2 mb-2">
+    <span>Filters </span>
+    <div class="btn-group" role="group" aria-label="Account types">
+      <button type="button" class="btn btn-secondary" id="all" (click)="filterAccounts(all.id, '!')" #all>All</button>
+      <button type="button" class="btn btn-secondary" id="savings" (click)="filterAccounts(savings.id, '!')" #savings>Savings</button>
+      <button type="button" class="btn btn-secondary" id="current" (click)="filterAccounts(current.id, '!')" #current>Current</button>
     </div>
-    <p class="panel-tabs">
-      <a id="all" (click)="filterAccountsByType(all.id)" #all>All</a>
-      <a id="savings" (click)="filterAccountsByType(savings.id)" #savings>Savings</a>
-      <a id="current" (click)="filterAccountsByType(current.id)" #current>Current</a>
-    </p>
-    <div *ngFor="let account of filteredAccounts">
-      <a (click)="router.navigateByUrl('/transactions/' + account.accountNumber)">
-        <div class="panel-block repel">
-          <div>{{ account.accountNumber }}</div>
-          <div>${{ account.balance }}</div>
+  </div>
+  <div class="mt-2 mb-2">
+    <input type="text" placeholder="Search" (keyup)="filterAccounts(undefined, pattern.value)" #pattern />
+  </div>
+  <div class="list-group">
+    <div *ngFor="let account of filteredAccounts" class="list-group-item">
+      <a class="link" (click)="router.navigateByUrl('/transactions/' + account.accountNumber)">
+        <div class="d-flex justify-content-between">
+          <div>
+            {{ account.accountNumber }}
+          </div>
+          <div>
+            <span>{{ account.balance | currency }}</span>
+            <span class="ml-4">❯</span>
+          </div>
         </div>
       </a>
-    </div>
-    <div class="panel-block">
-      <button class="button is-link is-outlined is-fullwidth">
-        Manage
-      </button>
     </div>
   </div>
 </section>

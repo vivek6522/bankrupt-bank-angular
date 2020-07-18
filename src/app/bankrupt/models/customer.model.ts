@@ -1,6 +1,6 @@
 import { Account } from './account.model';
 
-export class Customer {
+export interface Customer {
   id: number;
   name: string;
   email: string;

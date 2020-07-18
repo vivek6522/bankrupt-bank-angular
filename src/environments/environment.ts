@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080',
+  apiUrl: 'http://localhost:18080',
   authClientOptions: {
     domain: 'vivekprajapati.auth0.com',
     client_id: 'JQuP2axAB7ZZNbT6MNTIuTB5clYD3gHo',

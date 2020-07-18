@@ -1,8 +1,8 @@
-import { Customer } from './customer.model';
+import { AccountType } from './account-type.enum';
 
-export class Account {
+export interface Account {
   accountNumber: string;
-  accountType: string;
+  accountType: AccountType;
   balance: number;
   preferred: boolean;
 }

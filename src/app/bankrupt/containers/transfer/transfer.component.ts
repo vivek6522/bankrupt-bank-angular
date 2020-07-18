@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CustomerService } from '../../services/customer.service';
 import { Account } from '../../models/account.model';
@@ -41,12 +41,15 @@ export class TransferComponent implements OnInit {
     this.transferForm = this.fb.group({
       source: sourceAccount || '',
       target: targetAccount || '',
-      amount: amount || '',
+      amount: [amount || '', [Validators.required]],
       description: description || '',
     });
   }
 
   transfer() {
+    if (this.transferForm.invalid) {
+      return;
+    }
     const transferCommand = this.transferForm.value;
     this.transferService
       .transfer({
