@@ -1,28 +1,28 @@
 <section id="customer" class="container">
-  <h4>Profile Information</h4>
+  <h4>{{ 'customer.heading.profileInfo' | translate }}</h4>
   <div class="customer__details">
 
-    <span class="label">ID</span>
+    <span>{{ 'customer.label.id' | translate }}</span>
     <span>{{ customer?.sub }}</span>
 
-    <span class="label">Name</span>
+    <span>{{ 'customer.label.name' | translate }}</span>
     <span>{{ customer?.name }}</span>
 
-    <span class="label">Picture</span>
+    <span>{{ 'customer.label.picture' | translate }}</span>
     <span><img [src]="customer?.picture" alt="Profile picture"/></span>
 
   </div>
 </section>
 
 <section id="accountCreation" class="container mt-4">
-  <h4>Create a new account</h4>
+  <h4>{{ 'customer.heading.newAccount' | translate }}</h4>
   <form [formGroup]="newAccountForm">
     <div class="input-group">
       <select class="form-control" formControlName="accountType" aria-label="Select new account type">
-        <option *ngFor="let account of ACCOUNT_TYPES" [value]="account">{{ account }}</option>
+        <option *ngFor="let account of ACCOUNT_TYPES" [value]="account">{{ 'customer.label.' + account | translate }}</option>
       </select>
       <div class="input-group-append">
-        <button class="btn btn-primary" (click)="createAccount()">Confirm</button>
+        <button class="btn btn-primary" (click)="createAccount()">{{ 'customer.label.confirm' | translate }}</button>
       </div>
     </div>
   </form>

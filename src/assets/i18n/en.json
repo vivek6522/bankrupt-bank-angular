@@ -1,0 +1,38 @@
+{
+  "home": {
+    "heading": {
+      "accounts": "Accounts"
+    },
+    "label": {
+      "all": "All",
+      "savings": "Savings",
+      "current": "Current"
+    }
+  },
+  "customer": {
+    "heading": {
+      "profileInfo": "Profile Information",
+      "newAccount": "Create a new account"
+    },
+    "label": {
+      "id": "ID",
+      "name": "Name",
+      "picture": "Picture",
+      "confirm": "Confirm",
+      "CURRENT": "Current",
+      "SAVINGS": "Savings"
+    }
+  },
+  "transfer": {
+    "heading": {
+      "transfer": "Transfer"
+    },
+    "label": {
+      "sourceAccount": "Source Account",
+      "targetAccount": "Target Account",
+      "amount": "Amount",
+      "description": "Description",
+      "transfer": "Transfer"
+    }
+  }
+}

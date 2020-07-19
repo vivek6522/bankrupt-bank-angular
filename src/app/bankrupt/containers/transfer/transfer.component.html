@@ -1,8 +1,8 @@
 <section id="transfer" class="container">
-  <h4>Transfer</h4>
+  <h4>{{ 'transfer.heading.transfer' | translate }}</h4>
   <form [formGroup]="transferForm">
     <div class="form-group">
-      <label for="source">Source Account</label>
+      <label for="source">{{ 'transfer.label.sourceAccount' | translate }}</label>
       <select id="source" class="form-control" type="select" formControlName="source">
         <option [value]="account.accountNumber" [selected]="account.preferred" *ngFor="let account of accounts">
           {{ account.accountType }} - {{ account.accountNumber }} {{ account.balance }}
@@ -10,17 +10,17 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="target">Target Account</label>
+      <label for="target">{{ 'transfer.label.targetAccount' | translate }}</label>
       <input id="target" class="form-control" type="text" formControlName="target" />
     </div>
     <div class="form-group">
-      <label for="amount">Amount</label>
+      <label for="amount">{{ 'transfer.label.amount' | translate }}</label>
       <input id="amount" class="form-control" type="text" formControlName="amount" />
     </div>
     <div class="form-group">
-      <label for="description">Description</label>
+      <label for="description">{{ 'transfer.label.description' | translate }}</label>
       <input id="description" class="form-control" type="text" formControlName="description" />
     </div>
-    <button class="btn btn-primary" (click)="transfer()">Transfer</button>
+    <button class="btn btn-primary" (click)="transfer()">{{ 'transfer.label.transfer' | translate }}</button>
   </form>
 </section>

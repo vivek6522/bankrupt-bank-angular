@@ -13,6 +13,7 @@ import { CustomerService } from './services/customer.service';
 import { TransferService } from './services/transfer.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BankruptInterceptor } from './interceptors/bankrupt.interceptor';
+import { TranslateModule } from '@ngx-translate/core';
 
 export const ROUTES = [
   {
@@ -43,9 +44,14 @@ export const ROUTES = [
     TransferComponent,
     TransactionsComponent,
     BankruptHomeComponent,
-    BankruptComponent
+    BankruptComponent,
   ],
-  imports: [CommonModule, RouterModule.forChild(ROUTES), ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(ROUTES),
+    ReactiveFormsModule,
+    TranslateModule.forChild(),
+  ],
   exports: [BankruptComponent],
   providers: [
     CustomerService,

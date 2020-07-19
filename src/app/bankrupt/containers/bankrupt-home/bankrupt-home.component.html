@@ -1,11 +1,10 @@
 <section id="home" *ngIf="authService.loggedIn" class="container">
-  <h1>Accounts</h1>
+  <h1>{{ 'home.heading.accounts' | translate }}</h1>
   <div class="mt-2 mb-2">
-    <span>Filters </span>
     <div class="btn-group" role="group" aria-label="Account types">
-      <button type="button" class="btn btn-secondary" id="all" (click)="filterAccounts(all.id, '!')" #all>All</button>
-      <button type="button" class="btn btn-secondary" id="savings" (click)="filterAccounts(savings.id, '!')" #savings>Savings</button>
-      <button type="button" class="btn btn-secondary" id="current" (click)="filterAccounts(current.id, '!')" #current>Current</button>
+      <button type="button" class="btn btn-secondary" id="all" (click)="filterAccounts(all.id, '!')" #all>{{ 'home.label.all' | translate }}</button>
+      <button type="button" class="btn btn-secondary" id="savings" (click)="filterAccounts(savings.id, '!')" #savings>{{ 'home.label.savings' | translate }}</button>
+      <button type="button" class="btn btn-secondary" id="current" (click)="filterAccounts(current.id, '!')" #current>{{ 'home.label.current' | translate }}</button>
     </div>
   </div>
   <div class="mt-2 mb-2">
