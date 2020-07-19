@@ -23,4 +23,9 @@
     </div>
     <button class="btn btn-primary" (click)="transfer()">{{ 'transfer.label.transfer' | translate }}</button>
   </form>
+  <app-success-message
+    *ngIf="createdPaymentReference"
+    [translationCode]="'transfer.message.paymentInitiated'"
+    [translationParams]="{ 'paymentReference': createdPaymentReference }">
+  </app-success-message>
 </section>

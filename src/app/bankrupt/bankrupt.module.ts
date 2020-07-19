@@ -14,6 +14,7 @@ import { TransferService } from './services/transfer.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BankruptInterceptor } from './interceptors/bankrupt.interceptor';
 import { TranslateModule } from '@ngx-translate/core';
+import { SuccessMessageComponent } from './components/success-message/success-message.component';
 
 export const ROUTES = [
   {
@@ -45,6 +46,7 @@ export const ROUTES = [
     TransactionsComponent,
     BankruptHomeComponent,
     BankruptComponent,
+    SuccessMessageComponent,
   ],
   imports: [
     CommonModule,

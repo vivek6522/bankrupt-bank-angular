@@ -14,6 +14,7 @@ export class TransferComponent implements OnInit {
   transferForm: FormGroup;
   amountInCents: number;
   accounts: Account[];
+  createdPaymentReference: string;
 
   constructor(
     private readonly fb: FormBuilder,
@@ -58,6 +59,6 @@ export class TransferComponent implements OnInit {
         amount: parseFloat(transferCommand.amount),
         description: transferCommand.description,
       })
-      .subscribe((response) => console.log(response));
+      .subscribe((response) => this.createdPaymentReference = response.paymentReference);
   }
 }

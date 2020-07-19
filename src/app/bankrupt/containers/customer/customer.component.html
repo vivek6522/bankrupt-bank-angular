@@ -26,5 +26,9 @@
       </div>
     </div>
   </form>
-  <p class="text-success" *ngIf="newAccount">Account {{ newAccount }} created.</p>
+  <app-success-message
+    *ngIf="newAccount"
+    [translationCode]="'customer.message.accountCreated'"
+    [translationParams]="{ 'account': newAccount }">
+  </app-success-message>
 </section>

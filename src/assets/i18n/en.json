@@ -21,6 +21,9 @@
       "confirm": "Confirm",
       "CURRENT": "Current",
       "SAVINGS": "Savings"
+    },
+    "message": {
+      "accountCreated": "Account {{ account }} created."
     }
   },
   "transfer": {
@@ -33,6 +36,9 @@
       "amount": "Amount",
       "description": "Description",
       "transfer": "Transfer"
+    },
+    "message": {
+      "paymentInitiated": "Payment initiated with reference {{ paymentReference }}."
     }
   }
 }
