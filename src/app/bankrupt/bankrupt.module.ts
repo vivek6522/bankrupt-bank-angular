@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { BankruptAuthGuard } from './services/bankrupt.authguard';
@@ -15,6 +15,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BankruptInterceptor } from './interceptors/bankrupt.interceptor';
 import { TranslateModule } from '@ngx-translate/core';
 import { SuccessMessageComponent } from './components/success-message/success-message.component';
+import { FormValidationMessagesComponent } from './components/form-validation-messages/form-validation-messages.component';
+import { CustomerProfileComponent } from './components/customer-profile/customer-profile.component';
+import { AccountManagementComponent } from './components/account-management/account-management.component';
 
 export const ROUTES = [
   {
@@ -47,12 +50,16 @@ export const ROUTES = [
     BankruptHomeComponent,
     BankruptComponent,
     SuccessMessageComponent,
+    FormValidationMessagesComponent,
+    CustomerProfileComponent,
+    AccountManagementComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(ROUTES),
     ReactiveFormsModule,
     TranslateModule.forChild(),
+    FormsModule,
   ],
   exports: [BankruptComponent],
   providers: [

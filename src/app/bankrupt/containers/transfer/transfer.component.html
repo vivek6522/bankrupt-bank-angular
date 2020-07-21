@@ -4,7 +4,7 @@
     <div class="form-group">
       <label for="source">{{ 'transfer.label.sourceAccount' | translate }}</label>
       <select id="source" class="form-control" type="select" formControlName="source">
-        <option [value]="account.accountNumber" [selected]="account.preferred" *ngFor="let account of accounts">
+        <option *ngFor="let account of accounts" [value]="account.accountNumber" [selected]="account.preferred">
           {{ account.accountType }} - {{ account.accountNumber }} {{ account.balance }}
         </option>
       </select>
@@ -12,16 +12,21 @@
     <div class="form-group">
       <label for="target">{{ 'transfer.label.targetAccount' | translate }}</label>
       <input id="target" class="form-control" type="text" formControlName="target" />
+      <app-form-validation-messages [control]="transferForm.get('target')" [params]="{ field: 'target' }"></app-form-validation-messages>
     </div>
     <div class="form-group">
       <label for="amount">{{ 'transfer.label.amount' | translate }}</label>
       <input id="amount" class="form-control" type="text" formControlName="amount" />
+      <app-form-validation-messages [control]="transferForm.get('amount')" [params]="{ field: 'amount' }"></app-form-validation-messages>
     </div>
     <div class="form-group">
       <label for="description">{{ 'transfer.label.description' | translate }}</label>
       <input id="description" class="form-control" type="text" formControlName="description" />
+      <app-form-validation-messages [control]="transferForm.get('description')" [params]="{ field: 'description' }"></app-form-validation-messages>
     </div>
-    <button class="btn btn-primary" (click)="transfer()">{{ 'transfer.label.transfer' | translate }}</button>
+    <button type="submit" class="btn btn-primary" (click)="transfer()" [disabled]="transferForm.invalid">
+      {{ 'transfer.label.transfer' | translate }}
+    </button>
   </form>
   <app-success-message
     *ngIf="createdPaymentReference"

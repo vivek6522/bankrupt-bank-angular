@@ -1,8 +1,6 @@
-import { Account } from './account.model';
 
 export interface Customer {
-  id: number;
+  sub: string;
   name: string;
-  email: string;
-  accounts: Account[];
+  picture: string;
 }

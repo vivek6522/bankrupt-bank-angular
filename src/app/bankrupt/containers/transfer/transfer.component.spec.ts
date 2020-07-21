@@ -10,6 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 import { TransferService } from '../../services/transfer.service';
 import { MockTransferService } from '../../services/transfer.mock';
 import { MockCustomerService } from '../../services/customer.mock';
+import { FormValidationMessagesComponent } from '../../components/form-validation-messages/form-validation-messages.component';
+import { MockTranslateService } from '../../mocks/translate-service.mock';
+import { TranslateService } from '@ngx-translate/core';
 
 describe('TransferComponent', () => {
   let component: TransferComponent;
@@ -23,7 +26,11 @@ describe('TransferComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TransferComponent, MockTranslatePipe],
+      declarations: [
+        TransferComponent,
+        MockTranslatePipe,
+        FormValidationMessagesComponent,
+      ],
       imports: [
         ReactiveFormsModule,
         HttpClientTestingModule,
@@ -45,6 +52,10 @@ describe('TransferComponent', () => {
         {
           provide: TransferService,
           useClass: MockTransferService,
+        },
+        {
+          provide: TranslateService,
+          useClass: MockTranslateService,
         },
       ],
     }).compileComponents();
@@ -82,11 +93,4 @@ describe('TransferComponent', () => {
     expect(component.createdPaymentReference).toBe('payment-reference');
   });
 
-  it('should have no payment reference when form is invalid', () => {
-    expect(component).toBeTruthy();
-
-    component.transferForm.get('amount').setValue('');
-    component.transfer();
-    expect(component.createdPaymentReference).toBeUndefined();
-  });
 });

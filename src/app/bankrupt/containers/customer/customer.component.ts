@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CustomerService } from '../../services/customer.service';
-import { AccountType } from '../../models/account-type.enum';
-import { Account } from '../../models/account.model';
+import { Customer } from '../../models/customer.model';
 
 @Component({
   selector: 'app-customer',
@@ -11,32 +9,13 @@ import { Account } from '../../models/account.model';
   styleUrls: ['./customer.component.scss'],
 })
 export class CustomerComponent implements OnInit {
-  ACCOUNT_TYPES = [AccountType.CURRENT, AccountType.SAVINGS];
+  customer: Customer;
 
-  customer: any;
-  newAccountForm: FormGroup;
-  newAccount: Account;
-
-  constructor(
-    private readonly customerService: CustomerService,
-    private readonly fb: FormBuilder
-  ) {}
+  constructor(private readonly customerService: CustomerService) {}
 
   ngOnInit(): void {
     this.customerService
       .fetchCustomerDetails()
       .subscribe((customer) => (this.customer = customer));
-    this.newAccountForm = this.fb.group({
-      accountType: ['', [Validators.required]],
-    });
-  }
-
-  createAccount(): void {
-    this.customerService
-      .createAccount(
-        this.newAccountForm.get('accountType').value,
-        this.customer.sub
-      )
-      .subscribe((account) => (this.newAccount = account));
   }
 }

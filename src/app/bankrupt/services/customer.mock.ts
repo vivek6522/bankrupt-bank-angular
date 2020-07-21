@@ -1,14 +1,15 @@
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { DUMMY_ACCOUNTS } from '../mocks/accounts.data';
 import { Account } from '../models/account.model';
 import { AccountType } from '../models/account-type.enum';
+import { Customer } from '../models/customer.model';
 
 export class MockCustomerService {
   fetchCustomerAccounts(): Observable<Account[]> {
     return of(DUMMY_ACCOUNTS);
   }
 
-  fetchCustomerDetails(): Observable<any> {
+  fetchCustomerDetails(): Observable<Customer> {
     return of({
       sub: 'id',
       name: 'Some Name',

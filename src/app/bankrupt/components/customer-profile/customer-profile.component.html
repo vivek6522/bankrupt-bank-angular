@@ -1,0 +1,15 @@
+<section id="customer-profile" class="container">
+  <h4>{{ 'customer.heading.profileInfo' | translate }}</h4>
+  <div class="customer__details">
+
+    <span>{{ 'customer.label.id' | translate }}</span>
+    <span id="customerId">{{ customer?.sub }}</span>
+
+    <span>{{ 'customer.label.name' | translate }}</span>
+    <span id="customerName">{{ customer?.name }}</span>
+
+    <span>{{ 'customer.label.picture' | translate }}</span>
+    <span><img id="customerPicture" [src]="customer?.picture" alt="Profile picture"/></span>
+
+  </div>
+</section>

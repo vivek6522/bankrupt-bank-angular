@@ -5,7 +5,7 @@ translations.set('some.code', 'Some code');
 
 @Pipe({ name: 'translate' })
 export class MockTranslatePipe implements PipeTransform {
-  transform(value: any, ...args: any[]) {
+  transform(value: string, ...args: string[]) {
     return translations.get(value);
   }
 }
