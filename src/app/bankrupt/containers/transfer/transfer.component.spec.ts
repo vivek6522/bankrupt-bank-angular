@@ -81,4 +81,12 @@ describe('TransferComponent', () => {
     component.transfer();
     expect(component.createdPaymentReference).toBe('payment-reference');
   });
+
+  it('should have no payment reference when form is invalid', () => {
+    expect(component).toBeTruthy();
+
+    component.transferForm.get('amount').setValue('');
+    component.transfer();
+    expect(component.createdPaymentReference).toBeUndefined();
+  });
 });

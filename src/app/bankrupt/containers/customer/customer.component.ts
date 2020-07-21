@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { CustomerService } from '../../services/customer.service';
 import { AccountType } from '../../models/account-type.enum';
+import { Account } from '../../models/account.model';
 
 @Component({
   selector: 'app-customer',
@@ -14,7 +15,7 @@ export class CustomerComponent implements OnInit {
 
   customer: any;
   newAccountForm: FormGroup;
-  newAccount: string;
+  newAccount: Account;
 
   constructor(
     private readonly customerService: CustomerService,
@@ -36,6 +37,6 @@ export class CustomerComponent implements OnInit {
         this.newAccountForm.get('accountType').value,
         this.customer.sub
       )
-      .subscribe((account) => (this.newAccount = account.accountNumber));
+      .subscribe((account) => (this.newAccount = account));
   }
 }
