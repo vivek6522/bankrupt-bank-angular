@@ -6,7 +6,13 @@ import { AuthService } from '../../services/auth.service';
 import { CustomerService } from '../../services/customer.service';
 import { Account } from './../../models/account.model';
 
-const ALL_ACCOUNTS_TAB_ID = 'all';
+export const ALL_ACCOUNTS_TAB_ID = 'all';
+/*
+ * '!' is a special character which tells the logic to ignore pattern search,
+ * because undefined is supposed to be used as no filter.
+ * '!' will never be used in the account number so here it goes ¯\_(ツ)_/¯.
+ */
+export const DO_NOT_SEARCH_PATTERN = '!';
 
 @Component({
   selector: 'app-bankrupt-home',
@@ -77,7 +83,9 @@ export class BankruptHomeComponent implements OnInit {
 
   private filterAccountsByPattern(searchPattern: string) {
     this.searchPatternToUse =
-      searchPattern !== '!' ? searchPattern : this.searchPatternToUse;
+      searchPattern !== DO_NOT_SEARCH_PATTERN
+        ? searchPattern
+        : this.searchPatternToUse;
     return this.filteredAccounts.filter((account) =>
       account.accountNumber.match(new RegExp(this.searchPatternToUse, 'i'))
     );
