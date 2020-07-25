@@ -23,7 +23,6 @@ export const ROUTES = [
   {
     path: 'home',
     component: BankruptHomeComponent,
-    canActivate: [BankruptAuthGuard],
   },
   {
     path: 'customers',

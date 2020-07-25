@@ -1,7 +1,8 @@
 {
   "home": {
     "heading": {
-      "accounts": "Accounts"
+      "accounts": "Accounts",
+      "loggedOut": "You are currently logged out."
     },
     "label": {
       "all": "All",
@@ -26,7 +27,7 @@
       "SAVINGS": "Savings"
     },
     "message": {
-      "accountCreated": "Account {{ accountNumber }} created."
+      "accountCreated": "'{{ accountType }}' account created: {{ accountNumber }}"
     }
   },
   "transfer": {

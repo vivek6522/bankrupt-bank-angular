@@ -1,7 +1,7 @@
 <section id="account-management" class="container mt-4">
   <h4>{{ 'customer.heading.newAccount' | translate }}</h4>
   <div class="input-group">
-    <select class="form-control" aria-label="Select new account type" [(ngModel)]="newAccountType">
+    <select id="create-account" class="form-control" aria-label="Select new account type" [(ngModel)]="newAccountType">
       <option *ngFor="let accountType of ACCOUNT_TYPES" [value]="accountType">
         {{ 'customer.label.' + accountType | translate }}
       </option>
