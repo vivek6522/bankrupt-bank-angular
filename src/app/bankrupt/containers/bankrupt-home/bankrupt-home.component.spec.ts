@@ -10,7 +10,7 @@ import { MockCustomerService } from '../../services/customer.mock';
 import { AccountType } from '../../models/account-type.enum';
 import { DO_NOT_SEARCH_PATTERN } from './bankrupt-home.component';
 
-fdescribe('BankruptHomeComponent', () => {
+describe('BankruptHomeComponent', () => {
   let component: BankruptHomeComponent;
   let fixture: ComponentFixture<BankruptHomeComponent>;
 

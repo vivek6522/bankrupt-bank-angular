@@ -1,4 +1,3 @@
-import { Timestamp } from './timestamp.model';
 
 export interface TransferReceipt {
   paymentReference: string;
@@ -6,7 +5,7 @@ export interface TransferReceipt {
   amount: number;
   target: string;
   description: string;
-  timestamp: Timestamp;
+  timestamp: string;
 }
 
 export class TransferCommand {
