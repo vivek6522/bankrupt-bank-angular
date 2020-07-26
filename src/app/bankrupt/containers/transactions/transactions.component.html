@@ -5,7 +5,10 @@
         class="transaction-history__header--collapsible"
         [for]="entry.paymentReference"
       >
-        <div class="transaction__header">
+        <div class="transaction__header" *ngIf="isDebit(entry.amount)">
+          {{ entry.target }}
+        </div>
+        <div class="transaction__header" *ngIf="!isDebit(entry.amount)">
           {{ entry.source }}
         </div>
         <div class="transaction__header">
@@ -19,7 +22,8 @@
       />
       <div class="transaction-history__details--collapsible">
         <div>Target account</div>
-        <div>{{ entry.target }}</div>
+        <div *ngIf="isDebit(entry.amount)">{{ entry.source }}</div>
+        <div *ngIf="!isDebit(entry.amount)">{{ entry.target }}</div>
         <div>Description</div>
         <div>{{ entry.description }}</div>
         <div class="grid__cell--2-cols">
